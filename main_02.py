@@ -20,6 +20,8 @@ while True:
 
     elif choice == '2':
         # TODO Napraviti funkcionalnost dohvata i prikaza svih zadataka
+        # Implementirati ovaj dio koda tako da se ispise 10 zadataka na nacin:
+        # Zadatak 1. - Ovo je tekst 1. zadatka!
         pass
 
     elif choice == '3':
