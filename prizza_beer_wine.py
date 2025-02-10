@@ -105,6 +105,11 @@ pint = '''
 
 
 
+# TODO Dodati koristenje multiplikatora za ispis zvijezdica - koristitikonstantu
+
+# TODO Dodajte sve potrebne varijable i OBAVEZNO im dodajte pocetnu vrijednost
+# Dodajte cijene za svaki od proizvoda
+
 
 
 while True:
@@ -129,10 +134,20 @@ while True:
     print('0. Izlaz')
     print('*'*40)
 
+    # TODO Ovisno o izboru ispisite konacno stanje narudzbe:
+    # "Narucili ste:
+    #   n x naziv proizvoda
+    #   n x naziv proizvoda
+    #   n x naziv proizvoda
+    #   UKUPNO: nnn,nn EUR
+
     # choice
+    # prije nego je izasao iz narudzbe, ALI NE smijete koristi kolekcije podataka!!!
     menu_choice = input('Selektirajte broj ispred narudzbe: ')
     match menu_choice:
         case '1':
+            # TODO Povecaj brojac za 1
+            # TODO Povecaj cijenu za iznos cijene
             print(pizza)
         case '2':
             print(beer)
@@ -162,5 +177,3 @@ print('Hvala na posjeti, dodite nam opet!')
 print()
 print('*'*40)
 print()
-
-# TODO Dodati koristenje multiplikatora za ispis zvijezdica - koristitikonstantu
