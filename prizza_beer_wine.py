@@ -1,4 +1,31 @@
-wine = '''⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+import os
+
+cake = '''
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⠁⠹⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢠⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡁⢰⡆⣻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⡞⢳⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⣿⣿⣿⣥⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠟⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣾⠡⡄⠙⢦⠀⠀⠀⠀⠀⢠⣆⠀⠀⢸⡏⠉⠋⠉⢸⠀⠀⢀⣦⠀⠀⠀⢀⢰⠃⢠⠈⣇⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠻⣥⣽⣦⡼⠁⠀⠀⠀⠀⡞⠙⣆⠀⠈⢷⣀⡇⠀⣯⠀⠀⡼⠈⢷⡀⠀⠈⢻⣄⣾⣦⢞⣀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢠⡶⣿⣿⠿⢿⠇⠀⠀⠀⣰⠃⢠⠈⢳⡤⢾⡿⣇⠀⢸⠦⢼⡇⢰⡀⠹⣄⠀⢈⣿⠿⠿⠿⢻⡆⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠘⣇⠀⣀⠀⣾⡤⠔⠒⠋⠹⣦⣼⣶⣼⡃⠀⣿⠸⣆⣼⡆⢈⣳⣤⣷⣼⣋⠓⠺⣧⢠⠀⠀⢸⠁⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣹⡆⣻⠀⣿⠀⠀⠀⢀⡶⠿⠿⠿⠛⡇⠀⠈⠛⢛⠉⠀⣼⠛⣛⠛⠋⣹⢦⡀⠹⡿⡀⠀⢸⢦⣀⠀⠀⠀⠀⠀
+⠀⠀⠀⡼⠋⡇⠈⢷⢿⡀⡆⠀⠘⣧⢠⠀⠀⢸⠁⠀⠀⢠⠇⢰⠀⠸⡄⢸⠀⠠⡇⠀⢳⡀⢹⡇⠀⠸⡄⠈⠳⣄⠀⠀⠀
+⠀⠀⣸⠁⠀⠷⣤⠤⠞⠃⡇⠀⠀⠸⣿⡄⠀⢸⠀⠀⠀⠸⡀⠘⢦⡀⢹⠈⡇⠀⡇⠀⠀⠇⠹⠦⠤⠔⠋⣇⠀⢸⡆⠀⠀
+⠀⠀⡇⠀⠀⠀⠱⣄⠀⠀⠙⠲⢤⠀⣿⢳⡄⠈⣇⠀⠀⠀⣹⠀⠀⠃⢸⡄⠁⠀⣹⠀⠀⠀⠀⠀⠀⣀⡤⠿⠀⣸⠃⠀⠀
+⠀⠀⠙⣶⠲⡄⠀⠘⢦⣀⣀⣀⣸⠁⢛⠦⠤⠞⠃⠀⠀⠘⠁⠀⠀⠀⠀⠛⠒⠒⠋⣀⣀⡤⠤⠚⠉⠁⠀⢀⡴⣯⠀⠀⠀
+⠀⠀⠀⢸⠀⣇⠀⠀⣠⠷⣄⠀⠀⠀⠀⠙⠢⣄⣀⣀⠤⠖⠦⠤⣀⣀⣀⣀⡠⠄⠀⠀⠀⠀⠀⠀⠀⠀⢾⠉⠨⣿⠀⠀⠀
+⠀⠀⠀⣸⠀⠙⢦⠼⠁⠀⢸⡀⢠⠖⠋⠉⠒⠢⣄⠀⠀⠀⠀⣀⣀⣤⠾⢦⡀⠀⠀⣰⠊⠉⠓⠦⠤⣤⣞⣥⠾⢻⠆⠀⠀
+⠀⠀⢸⠉⠉⠓⠦⣄⡀⠀⠈⣧⠼⠁⠀⠀⠀⠀⠈⢧⡀⠈⠉⢡⠞⠁⠀⠀⠙⠦⠞⠁⠀⢀⣠⠤⠞⠋⠁⠀⢀⡼⠀⠀⠀
+⠀⢠⡇⠀⠀⠀⣀⠀⠉⠑⠒⠦⠤⢄⣀⣀⡀⠀⠀⠀⠙⠲⠖⠋⠀⠀⠀⣀⣠⠤⠔⠒⠋⠁⠀⠀⠀⠀⣀⣀⡼⣿⡀⠀⠀
+⢀⡼⠳⢶⠞⠉⠉⠙⢦⡀⠀⠀⠀⠂⠒⠚⠿⢍⣙⣶⢶⣶⣶⣶⣖⣋⣉⣁⣠⠄⠀⠀⠀⢀⡴⠦⠤⠞⠁⠀⠀⡇⠙⢧⠀
+⣿⡇⠀⠈⢧⡀⠀⠀⠀⠙⢦⡤⠴⠒⠒⠲⠤⣄⡀⠀⠀⠀⢀⡽⠛⠯⣍⡉⠀⠀⠀⠀⣠⠟⠀⠀⠀⠀⠀⢀⡴⠃⠀⢸⡇
+⠈⢧⠀⠀⠀⠙⠢⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⢤⡤⠞⠀⠀⠀⠈⠉⠓⠒⠒⠋⠁⠀⠀⠀⣀⡤⠞⠁⠀⠀⢀⡾⠁
+⠀⠈⠑⠦⣀⠀⠀⠀⠉⠓⠲⠤⢄⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⡤⠴⠒⠋⠁⠀⠀⢀⣠⠖⠋⠀⠀
+⠀⠀⠀⠀⠀⠉⠓⠲⠤⣄⣀⣀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⠀⠀⠀⢀⣀⣠⠤⠖⠛⠁⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠙⠒⠒⠒⠒⠦⠤⠤⠤⠤⠤⠤⠤⠖⠒⠒⠒⠋⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+'''
+wine = '''
 ⠀⠀⠀⠀⢀⡤⣶⣿⠿⠿⠿⠿⠿⠿⣾⣶⣦⡀⠀⠀⠀⠀
 ⠀⠀⠀⢠⣿⣿⣥⣀⡀⠀⠀⠀⠀⢀⣀⣠⣿⣿⣄⠀⠀⠀
 ⠀⠀⢀⣿⡟⠉⠛⠛⠿⠿⠿⠿⠿⠿⠛⠛⠉⠹⣿⣄⠀⠀
@@ -14,7 +41,8 @@ wine = '''⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠉⠙⢻⣿⣿⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⡿⣿⣆⡀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⢀⣴⣾⡿⠟⠋⠀⠈⠻⢿⣷⣦⣄⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠛⠿⠿⢿⣷⣾⣿⠿⠿⠿⠟⠋⠀⠀⠀⠀⠀'''
+⠀⠀⠀⠀⠀⠛⠿⠿⢿⣷⣾⣿⠿⠿⠿⠟⠋⠀⠀⠀⠀⠀
+'''
 pizza = '''
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣶⣶⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀
@@ -79,10 +107,53 @@ pint = '''
 
 
 
+while True:
+    # Ciscenje ekrana za ispis sadrzaja na prazan ekran
+    os.system('cls')
 
-for i in range(17):
-    print(pizza)
-    print(pizza)
-    print(beer)
-    print(pint)
-    print(wine)
+    # Izbornik
+    print('\t\tMENU')
+    print('*'*40)
+    print('1. Pizza')
+    print('2. Pivo')
+    print('3. Pinta')
+    print('4. Vino')
+    print('5. Kolac')
+    print('0. Izlaz')
+    print('*'*40)
+
+    # choice
+    menu_choice = input('Selektirajte broj ispred narudzbe: ')
+    match menu_choice:
+        case '1':
+            print(pizza)
+        case '2':
+            print(beer)
+        case '3':
+            print(pint)
+        case '4':
+            print(wine)
+        case '5':
+            print(cake)
+        case '0':
+            break
+        case _:
+            print('Na zalost taj izbor nemamo u ponudi! Izaberite nesto drugo.')
+
+
+    order_next = input('Zelite li uzeti jos nesto? (da/ne): ')
+    if order_next.lower() != 'da':
+        break
+
+# Pozdravna poruka
+print()
+print('*'*40)
+print()
+print('Hvala na posjeti, dodite nam opet!')
+# TODO U ovom dijelu ispisati koliko je puta korisnik seletirao odredeni izbor
+# prije nego je izasao iz narudzbe, ALI NE smijete koristi kolekcije podataka!!!
+print()
+print('*'*40)
+print()
+
+# TODO Dodati koristenje multiplikatora za ispis zvijezdica - koristitikonstantu
