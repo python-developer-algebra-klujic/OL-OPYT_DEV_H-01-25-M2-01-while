@@ -109,7 +109,14 @@ pint = '''
 
 while True:
     # Ciscenje ekrana za ispis sadrzaja na prazan ekran
-    os.system('cls')
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+
+    # Za one koji zele znati vise - if uvjet u jednoj liniji:
+    # os.system('cls' if os.name == 'nt' else 'clear')
+
 
     # Izbornik
     print('\t\tMENU')
