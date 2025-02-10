@@ -144,6 +144,7 @@ while True:
     # choice
     # prije nego je izasao iz narudzbe, ALI NE smijete koristi kolekcije podataka!!!
     menu_choice = input('Selektirajte broj ispred narudzbe: ')
+
     match menu_choice:
         case '1':
             # TODO Povecaj brojac za 1
