@@ -1,5 +1,7 @@
 import os
 
+STARS = 40
+
 cake = '''
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⠁⠹⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -25,6 +27,10 @@ cake = '''
 ⠀⠀⠀⠀⠀⠉⠓⠲⠤⣄⣀⣀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⠀⠀⠀⢀⣀⣠⠤⠖⠛⠁⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠙⠒⠒⠒⠒⠦⠤⠤⠤⠤⠤⠤⠤⠖⠒⠒⠒⠋⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 '''
+cake_counter = 0
+cake_price = 2.5
+cake_total_price = cake_price * cake_counter
+
 wine = '''
 ⠀⠀⠀⠀⢀⡤⣶⣿⠿⠿⠿⠿⠿⠿⣾⣶⣦⡀⠀⠀⠀⠀
 ⠀⠀⠀⢠⣿⣿⣥⣀⡀⠀⠀⠀⠀⢀⣀⣠⣿⣿⣄⠀⠀⠀
@@ -43,6 +49,10 @@ wine = '''
 ⠀⠀⠀⠀⢀⣴⣾⡿⠟⠋⠀⠈⠻⢿⣷⣦⣄⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠛⠿⠿⢿⣷⣾⣿⠿⠿⠿⠟⠋⠀⠀⠀⠀⠀
 '''
+wine_counter = 0
+wine_price = 3.0
+wine_total_price = wine_price * wine_counter
+
 pizza = '''
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣶⣶⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀
@@ -59,6 +69,10 @@ pizza = '''
 ⢰⠁⠀⡤⠖⠺⢶⡾⠃⠀⠈⠙⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠈⠓⠾⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 '''
+pizza_counter = 0
+pizza_price = 5
+pizza_total_price = pizza_price * pizza_counter
+
 beer = '''
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⢤⡤⢤⣴⠞⠓⠶⠒⠒⣆⣀⡀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡸⠛⠉⠀⡴⠒⠋⠁⠉⠉⠦⠤⠴⣀⠀⠙⠒⣆⠀⠀
@@ -78,7 +92,10 @@ beer = '''
 ⠀⠀⠀⠀⠀⠀⠀⠀⢹⡘⠷⠦⢤⣀⣈⣉⣉⣛⣉⣩⣭⣭⣭⣾⣿⠿⣿⠟⠁⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠲⠶⠶⠤⠤⠤⣤⣤⣤⣤⣤⣭⣭⡭⠭⠴⠃⠀⠀⠀
 '''
-# iskljucivo bezalkoholno
+beer_counter = 0
+beer_price = 2.75
+beer_total_price = beer_price * beer_counter
+
 pint = '''
 ⠀⣾⣿⣶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -102,14 +119,11 @@ pint = '''
 ⠀⠀⠀⠀⠀⠀⢸⡃⠙⠻⠇⠸⣿⣿⡇⠀⣿⣿⣿⠀⣿⣿⣿⡇⢸⡿⠿⠃⡇⠀
 ⠀⠀⠀⠀⠀⠀⠀⠉⠛⠒⠶⠤⠤⢤⣤⣤⣤⣄⣀⣠⣤⣤⠤⠤⠴⠖⠒⠛⠁⠀
 ''' # iskljucivo bezalkoholno
+pint_counter = 0
+pint_price = 3.25
+pint_total_price = pint_price * pint_counter
 
-
-
-# TODO Dodati koristenje multiplikatora za ispis zvijezdica - koristitikonstantu
-
-# TODO Dodajte sve potrebne varijable i OBAVEZNO im dodajte pocetnu vrijednost
-# Dodajte cijene za svaki od proizvoda
-
+total_price = cake_total_price + pizza_total_price + wine_total_price + beer_total_price + pint_total_price
 
 
 while True:
@@ -125,21 +139,33 @@ while True:
 
     # Izbornik
     print('\t\tMENU')
-    print('*'*40)
+    print('*'*STARS)
     print('1. Pizza')
     print('2. Pivo')
     print('3. Pinta')
     print('4. Vino')
     print('5. Kolac')
     print('0. Izlaz')
-    print('*'*40)
-
+    print('*'*STARS)
+    print()
     # TODO Ovisno o izboru ispisite konacno stanje narudzbe:
-    # "Narucili ste:
-    #   n x naziv proizvoda
-    #   n x naziv proizvoda
-    #   n x naziv proizvoda
-    #   UKUPNO: nnn,nn EUR
+    if total_price:
+        print("Narucili ste:")
+    if pizza_counter:
+        print(f'{pizza_counter} x pizza ({pizza_total_price}) EUR')
+    if beer_counter:
+        print(f'{beer_counter} x pivo ({beer_total_price}) EUR')
+    if pint_counter:
+        print(f'{pint_counter} x pinta ({pint_total_price}) EUR')
+    if wine_counter:
+        print(f'{wine_counter} x vino ({wine_total_price}) EUR')
+    if cake_counter:
+        print(f'{cake_counter} x kolac ({cake_total_price}) EUR')
+    if total_price:
+        print('-'*STARS)
+        print(f'UKUPNO: {total_price} EUR')
+        print('*'*STARS)
+        print()
 
     # choice
     # prije nego je izasao iz narudzbe, ALI NE smijete koristi kolekcije podataka!!!
@@ -147,16 +173,29 @@ while True:
 
     match menu_choice:
         case '1':
-            # TODO Povecaj brojac za 1
-            # TODO Povecaj cijenu za iznos cijene
+            pizza_counter += 1
+            pizza_total_price += pizza_price
+            total_price += pizza_total_price
             print(pizza)
         case '2':
+            beer_counter += 1
+            beer_total_price += beer_price
+            total_price += beer_total_price
             print(beer)
         case '3':
+            pint_counter += 1
+            pint_total_price += pint_price
+            total_price += pint_total_price
             print(pint)
         case '4':
+            wine_counter += 1
+            wine_total_price += wine_price
+            total_price += wine_total_price
             print(wine)
         case '5':
+            cake_counter += 1
+            cake_total_price += cake_price
+            total_price += cake_total_price
             print(cake)
         case '0':
             break
@@ -169,12 +208,32 @@ while True:
         break
 
 # Pozdravna poruka
+if os.name == 'nt':
+    os.system('cls')
+else:
+    os.system('clear')
+
 print()
-print('*'*40)
+print('*'*STARS)
 print()
+if total_price:
+    print("Narucili ste:")
+if pizza_counter:
+    print(f'{pizza_counter} x pizza ({pizza_total_price}) EUR')
+if beer_counter:
+    print(f'{beer_counter} x pivo ({beer_total_price}) EUR')
+if pint_counter:
+    print(f'{pint_counter} x pinta ({pint_total_price}) EUR')
+if wine_counter:
+    print(f'{wine_counter} x vino ({wine_total_price}) EUR')
+if cake_counter:
+    print(f'{cake_counter} x kolac ({cake_total_price}) EUR')
+if total_price:
+    print('-'*STARS)
+    print(f'UKUPNO: {total_price} EUR')
+    print('*'*STARS)
+    print()
 print('Hvala na posjeti, dodite nam opet!')
-# TODO U ovom dijelu ispisati koliko je puta korisnik seletirao odredeni izbor
-# prije nego je izasao iz narudzbe, ALI NE smijete koristi kolekcije podataka!!!
 print()
-print('*'*40)
+print('*'*STARS)
 print()
